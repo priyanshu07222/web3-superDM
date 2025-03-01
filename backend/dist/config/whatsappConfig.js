@@ -12,18 +12,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const user_route_1 = require("./routes/user.route");
-const dotenv_1 = __importDefault(require("dotenv"));
-const cors_1 = __importDefault(require("cors"));
-const whatsappConfig_1 = require("./config/whatsappConfig");
-const app = (0, express_1.default)();
-dotenv_1.default.config();
-app.use((0, cors_1.default)());
-app.use(express_1.default.json());
-app.use('/api/v1', user_route_1.userRouter);
-app.listen(3000, () => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Server is running on port 3000");
-    yield (0, whatsappConfig_1.sendWhatsappMessage)("+918810300636", "Hello from web3 SuperDm");
-    // await sendMail()
-}));
+exports.sendWhatsappMessage = void 0;
+const twilio_1 = __importDefault(require("twilio"));
+const client = (0, twilio_1.default)(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+const sendWhatsappMessage = (to, message) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield client.messages.create({
+            from: `whatsapp:${process.env.TWILIO_PHONE_NUMBER}`,
+            body: message,
+            to: `whatsapp:${to}`
+        });
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
+exports.sendWhatsappMessage = sendWhatsappMessage;
