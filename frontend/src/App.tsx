@@ -12,7 +12,7 @@ function App() {
       <RetroGrid />
       <HeroSection />
       <div className='h-screen bg-green-900'>
-        <h1>hello</h1>
+        <h1 className="cursor-pointer shadow-lg hover:shadow-xl transition-shadow">hello</h1>
       </div>
 
     </>

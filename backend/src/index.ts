@@ -19,7 +19,7 @@ app.use('/api/v1', userRouter)
 app.listen(3000, async () => {
 
   console.log("Server is running on port 3000")
-  await sendWhatsappMessage("+918810300636", "Hello from web3 SuperDm")
+  await sendWhatsappMessage("+918810300636wwww", "Hello from web3 SuperDm")
   // await sendMail()
 
 })
