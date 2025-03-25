@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import InteractiveGrid from './animata/background/interactive-grid';
 import { ShimmerButton } from './magicui/shimmer-button';
 
 const HeroSection = () => {
@@ -30,7 +29,7 @@ const HeroSection = () => {
   return (
 
     <section className="bg-[#000] text-[#F7F7F7] min-h-screen flex items-center justify-center">
-      
+
       <div className="container mx-auto px-6 py-16 text-center">
         {/* Title */}
         <motion.h1
@@ -49,28 +48,29 @@ const HeroSection = () => {
           initial="hidden"
           animate="visible"
         >
-          Send exclusive Super DMs powered by Solana. Pay, connect, and notify instantly.
+          Send exclusive Super DMs powered by Solana.
+          <br /> Pay, connect, and notify instantly.
         </motion.p>
 
         {/* CTA Button */}
         <motion.a
           href="#get-started"
-          className="inline-block font-semibold py-3 px-8 rounded-full"
+          className="inline-block text-white font-semibold py-3 px-8 rounded-full"
           variants={buttonVariants}
           initial="hidden"
           animate="visible"
           whileHover="hover"
         >
-          <ShimmerButton>Get started</ShimmerButton>
+          <ShimmerButton className='text-white'>Get started</ShimmerButton>
         </motion.a>
 
         {/* Decorative Line */}
-        <motion.div
-          className="mt-12 w-24 h-1 bg-[#FFB22C] mx-auto rounded-full"
+        {/* <motion.div
+          className=" w-24 h-1 bg-[#FFB22C] mx-auto rounded-full"
           variants={lineVariants}
           initial="hidden"
           animate="visible"
-        />
+        /> */}
 
       </div>
 

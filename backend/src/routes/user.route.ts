@@ -10,3 +10,5 @@ userRouter.post("/user/getUser", getUserProfile)
 userRouter.put("/user/update", updateUserProfile)
 
 userRouter.post("/user", userController)
+
+userRouter.get("/user/get", )

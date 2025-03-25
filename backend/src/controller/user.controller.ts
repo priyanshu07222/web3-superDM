@@ -38,13 +38,31 @@ export const updateUserProfile = async (req: Request, res: Response) => {
 
 export const getUserProfile = async (req: Request, res: Response) => {
     console.log("jeelo")
-    const id = req.body.id
+    try {
+        const id = req.body.id
 
-    const user = await prisma.user.findUnique({
-        where: {
-            id: parseInt(id)
-        }
-    })
+        const user = await prisma.user.findUnique({
+            where: {
+                id: parseInt(id)
+            }
+        })
 
-    res.json(user)
+        res.json(user)
+    } catch (error) {
+        res.json({
+            message: "Something went wrong!"
+        })
+    }
+}
+
+export const getAllUser = async (req: Request, res: Response) => {
+    try {
+        const users = await prisma.user.findMany();
+        res.json({ users, message: "Success" })
+    } catch (error) {
+        console.log(error);
+        res.json({
+            message: "S"
+        })
+    }
 }
