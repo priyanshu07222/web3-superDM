@@ -39,7 +39,9 @@
     --ring: 252 87% 60%;
     --radius: 0.75rem;
   }
+}
 
+/* 
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -67,6 +69,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     background-image: radial-gradient(circle at 15% 50%, rgba(101, 31, 255, 0.1) 0%, transparent 25%),
@@ -144,10 +147,12 @@
 }
 
 @keyframes pulse-glow {
+
   0%,
   100% {
     box-shadow: 0 0 5px 0 rgba(139, 92, 246, 0.3);
   }
+
   50% {
     box-shadow: 0 0 20px 5px rgba(139, 92, 246, 0.6);
   }
@@ -158,10 +163,12 @@
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -176,9 +183,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -213,7 +222,4 @@
 
 .gradient-bg-hover:hover {
   background-position: 100% 100%;
-}
-
-
-
+} */

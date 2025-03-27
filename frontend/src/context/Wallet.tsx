@@ -16,7 +16,7 @@ export const Wallet = () => {
                     <div className='flex gap-4'>
 
                         <WalletMultiButton className='bg-orange-500' />
-                        <WalletDisconnectButton />
+                        {/* <WalletDisconnectButton /> */}
                     </div>
                 </WalletModalProvider>
             </WalletProvider>
