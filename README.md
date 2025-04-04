@@ -1,11 +1,11 @@
 # Web3 Super DM
 
 ## 🚀 Overview
-Web3 Super DM is a decentralized messaging platform built on the **Solana blockchain**, allowing users to send direct messages by paying a small amount of **SOL**. The recipient gets notified via **Email, WhatsApp, and Telegram** once a payment is received.
+Web3 Super DM is a decentralized messaging platform built on the **Solana blockchain**, allowing users to send direct messages by paying a small amount of **SOL**. The recipient gets notified via **Email, WhatsApp, and Discord** once a payment is received.
 
 ## 🌟 Features
 - 💰 **Super DM Payment:** Users must pay SOL to send a DM.
-- 🔔 **Instant Notifications:** Recipients get notified via email, WhatsApp, and Telegram.
+- 🔔 **Instant Notifications:** Recipients get notified via email, WhatsApp, and Discord.
 - 🔗 **Web3 Integration:** Fully decentralized and trustless.
 - 🔒 **Secure Messaging:** Messages are only delivered after payment confirmation.
 - 🏦 **PostgreSQL Database:** Stores user information and transaction history.
@@ -32,7 +32,7 @@ npm install
 
 ### **3️⃣ Setup Environment Variables**
 - Create a `.env` file in both `backend/` and `frontend/`.
-- Add your API keys (Solana RPC, Twilio, Nodemailer, Telegram Bot, etc.)
+- Add your API keys (Solana RPC, Twilio, Nodemailer, Discord Bot, etc.)
 
 ### **4️⃣ Run Backend Server**
 ```bash
@@ -54,12 +54,12 @@ anchor deploy
 ```
 
 ## 📡 API Endpoints
-| Method | Endpoint        | Description                                    |
-| ------ | --------------- | ---------------------------------------------- |
-| `POST` | `/api/pay`      | Process SOL payment                            |
-| `POST` | `/api/notify`   | Send notifications (Email, WhatsApp, Telegram) |
-| `GET`  | `/api/history`  | Fetch message & transaction history            |
-| `POST` | `/api/register` | Register user info                             |
+| Method | Endpoint        | Description                                   |
+| ------ | --------------- | --------------------------------------------- |
+| `POST` | `/api/pay`      | Process SOL payment                           |
+| `POST` | `/api/notify`   | Send notifications (Email, WhatsApp, Discord) |
+| `GET`  | `/api/history`  | Fetch message & transaction history           |
+| `POST` | `/api/register` | Register user info                            |
 
 ## 🎯 To-Do (Future Enhancements)
 - [ ] **Add NFT integration** (Users must hold an NFT to DM premium users)

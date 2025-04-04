@@ -14,19 +14,61 @@ datasource db {
 }
 
 model User {
-  id              Int       @id @default(autoincrement())
-  email           String    @unique
-  password        String
-  name            String?   @default("Anonymous")
-  telegramid      String?
-  solWalletPubkey String?
-  Message         Message[]
+  id            String   @id @default(uuid())
+  email         String   @unique
+  password      String
+  name          String?  @default("Anonymous")
+  phone         String?  @unique
+  walletAddress String?  @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  sentMessages         Message[]            @relation("SenderMessages")
+  receivedMessages     Message[]            @relation("ReceiverMessages")
+  sentTransactions     Transaction[]        @relation("SentTransactions")
+  receivedTransactions Transaction[]        @relation("ReceivedTransactions")
+  notificationSettings NotificationSetting?
+}
+
+model Transaction {
+  id         String            @id @default(uuid())
+  senderId   String
+  receiverId String
+  amount     Float
+  token      String
+  status     TransactionStatus @default(PENDING)
+  createdAt  DateTime          @default(now())
+
+  // Relations
+  sender   User @relation("SentTransactions", fields: [senderId], references: [id])
+  receiver User @relation("ReceivedTransactions", fields: [receiverId], references: [id])
+}
+
+enum TransactionStatus {
+  PENDING
+  SUCCESS
+  FAILED
 }
 
 model Message {
-  id      Int      @id @default(autoincrement())
-  content String
-  userId  Int
-  user    User     @relation(fields: [userId], references: [id])
-  sentat  DateTime @default(now())
+  id         String   @id @default(uuid())
+  senderId   String
+  receiverId String
+  content    String
+  sentAt     DateTime @default(now())
+  read       Boolean  @default(false)
+
+  // Relations
+  sender   User @relation("SenderMessages", fields: [senderId], references: [id])
+  receiver User @relation("ReceiverMessages", fields: [receiverId], references: [id])
+}
+
+model NotificationSetting {
+  id        String  @id @default(uuid())
+  userId    String  @unique
+  email     Boolean @default(true)
+  sms       Boolean @default(true)
+  whatsapp  Boolean @default(true)
+
+  user      User @relation(fields: [userId], references: [id])
 }
