@@ -24,12 +24,12 @@ export const updateUserProfile = async (req: Request, res: Response) => {
 
     const user = await prisma.user.update({
         where: {
-            id: parseInt(id)
+            id: id
         },
         data: {
             name,
-            telegramid,
-            solWalletPubkey: pubkey
+            walletAddress: pubkey,
+
         }
     })
 
@@ -43,7 +43,7 @@ export const getUserProfile = async (req: Request, res: Response) => {
 
         const user = await prisma.user.findUnique({
             where: {
-                id: parseInt(id)
+                id: id
             }
         })
 
