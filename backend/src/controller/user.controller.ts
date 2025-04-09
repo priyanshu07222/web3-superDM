@@ -4,18 +4,6 @@ import { Request, Response } from "express";
 const prisma = new PrismaClient()
 
 
-export const userController = async (req: Request, res: Response) => {
-    const { email, password } = req.body
-
-    const user = await prisma.user.create({
-        data: {
-            email,
-            password
-        }
-    })
-
-    res.json({ message: "User created successfully", id: user.id })
-}
 
 export const updateUserProfile = async (req: Request, res: Response) => {
     console.log(req.body, req.params, "hello from update user profile")
